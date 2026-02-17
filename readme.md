@@ -94,6 +94,16 @@ xcode-select --install
 
 Install [MinGW-w64](https://www.mingw-w64.org/) or use the Windows Subsystem for Linux (WSL), which gives us a full Linux environment inside Windows.
 
+or install using chocolately
+```
+choco install mingw -y
+
+```
+then verify with
+```
+gcc --version
+
+```
 **Text Editor:**
 
 Any plain-text editor works. We will use Visual Studio Code. It is a good choice because it has syntax highlighting, error indicators, and a built-in terminal. For working on servers or in terminals, Vim or Nano are standard options.
