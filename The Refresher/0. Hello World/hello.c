@@ -28,9 +28,10 @@ int main(void) {
 
  How C builds and runs (conceptual):
  1. Preprocessing: `#include` and macros are expanded.
- 2. Compilation: source (.c) -> object (.o) with machine code for each translation unit. Then goes through assembly and optimization steps.
- 3. Linking: object files + libraries -> executable.
- 4. Execution: OS loads executable and starts at `main()`.
+ 2. Compilation: source (.c) -> object (.o) with machine code for each translation unit. 
+ 3. Then goes through assembly and optimization steps.
+ 4. Linking: object files + libraries -> executable.
+ 5. Execution: OS loads executable and starts at `main()`.
 
  Compile & run (example commands):
  - With GCC (MSYS2 / MinGW-w64 / WSL):

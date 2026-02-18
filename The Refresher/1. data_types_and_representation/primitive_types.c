@@ -62,6 +62,13 @@ Test output (example on a typical Windows MinGW-w64 environment):
     double e = 3.141593; size = 8 bytes
     char f = A; size = 1 byte
 
+`%zu` is a **format specifier** used in `printf`. It tells `printf` how to format the value being printed. Specifically:
+* `%z` tells `printf` the value is of type `size_t` (the type returned by `sizeof`).
+* `u` means the value should be printed as an **unsigned decimal number**.
+* `sizeof(a)` returns a `size_t`, not an `int`.
+* So `%zu` correctly prints the number of bytes `sizeof(a)` gives.
+* Without `%zu`, the output could be wrong or unsafe on some systems.
+
 Lessons learned:
 - `sizeof` reports sizes that depend on the platform and ABI. For example,
     Windows (LLP64) typically has `long` = 4 bytes even on 64-bit, while
