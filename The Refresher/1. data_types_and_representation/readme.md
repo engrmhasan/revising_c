@@ -1,19 +1,24 @@
-# Data Types and Memory Usage in C
+how many bytes each data type uses in memory.
 
-This document explores the memory usage, ranges, and behavior of various data types in C.
+* **sizeof(int) = 4**
+  An `int` takes 4 bytes of memory. It is used to store whole numbers (e.g., -10, 0, 25).
 
----
+* **sizeof(long) = 4**
+  A `long` takes 4 bytes on this system. It stores larger whole numbers (size may vary by system).
 
-## Memory Usage of Basic Data Types
+* **sizeof(short) = 2**
+  A `short` takes 2 bytes of memory. It stores smaller-range whole numbers.
 
-### Sizes of Data Types
+* **sizeof(float) = 4**
+  A `float` takes 4 bytes. It stores decimal (fractional) numbers with single precision.
 
-- **`sizeof(int)` = 4**: An `int` takes 4 bytes of memory. It is used to store whole numbers (e.g., -10, 0, 25).
-- **`sizeof(long)` = 4**: A `long` takes 4 bytes on this system. It stores larger whole numbers (size may vary by system).
-- **`sizeof(short)` = 2**: A `short` takes 2 bytes of memory. It stores smaller-range whole numbers.
-- **`sizeof(float)` = 4**: A `float` takes 4 bytes. It stores decimal (fractional) numbers with single precision.
-- **`sizeof(double)` = 8**: A `double` takes 8 bytes. It stores decimal numbers with higher precision than `float`.
-- **`sizeof(char)` = 1**: A `char` takes 1 byte. It stores a single character (like 'A', 'b', or '7').
+* **sizeof(double) = 8**
+  A `double` takes 8 bytes. It stores decimal numbers with higher precision than `float`.
+
+* **sizeof(char) = 1**
+  A `char` takes 1 byte. It stores a single character (like 'A', 'b', or '7').
+
+
 
 Here are the **actual value ranges** for each type (typical 4-byte `int` and `long` on a 32-bit system):
 
@@ -122,4 +127,38 @@ Here is a simple example program:
   DBL_MAX = 1.797693e+308
   ```
 
-check data_types_advanced to know more...
+---
+
+### Advanced Exploration of Data Types
+
+#### 1. Signed vs Unsigned Integers
+- **Signed integers** can represent both negative and positive numbers.
+  - Example: A signed 8-bit integer ranges from **-128 to 127**.
+- **Unsigned integers** can only represent positive numbers.
+  - Example: An unsigned 8-bit integer ranges from **0 to 255**.
+- **Overflow behavior**:
+  - Unsigned integers wrap around to 0 when exceeding their maximum value.
+  - Signed integers wrap around to their minimum value when exceeding their maximum value.
+
+#### 2. Floating Point Precision
+- Floating-point numbers (e.g., `float` and `double`) cannot store most decimal numbers exactly.
+  - Example: `0.1 + 0.2` does not equal exactly `0.3` due to approximation.
+- **Precision differences**:
+  - `float` has about **6–7 decimal digits** of precision.
+  - `double` has about **15–16 decimal digits** of precision.
+- **Best practices**:
+  - Avoid checking if two floating-point numbers are exactly equal.
+  - Instead, check if their difference is within a very small range.
+
+#### 3. `size_t` and Fixed-Width Types
+- **Fixed-width types** (from `stdint.h`) provide exact sizes:
+  - `uint8_t`: Unsigned, 8 bits (0 to 255).
+  - `int32_t`: Signed, 32 bits (-2,147,483,648 to 2,147,483,647).
+  - `uint64_t`: Unsigned, 64 bits (0 to 18,446,744,073,709,551,615).
+- **`size_t`**:
+  - Used for sizes and counts, such as the result of `sizeof()`.
+  - Always the right size for the platform.
+- Example:
+  - `sizeof("hello")` returns **6 bytes**, including the null terminator `\0`.
+
+For more details, explore each c files.
