@@ -762,6 +762,15 @@ Bit 11:8  = Speed setting (0 to 15)
 Bit 7:0   = Direction and flags
 ```
 
+Bit 15:12 Means
+
+Bits 15 down to 12
+That’s just a range.
+It’s the same as writing:
+15, 14, 13, 12
+
+“The motor ID is stored in the top 4 bits.”
+
 Packing:
 
 ```
@@ -778,13 +787,14 @@ speed    << 8:     0000  0111  0000  0000
 flags:             0000  0000  0010  0101
 OR together:       0011  0111  0010  0101
 ```
+We finally get command = 0011 0111 0010 0101 that one number storing all- motor_id, speed, flags.
 
-Extracting back:
+Extracting motor_id, speed, flags back from that command:
 
 ```
-uint8_t extracted_id    = (command >> 12) & 0x0F;   // shift down then mask 4 bits
-uint8_t extracted_speed = (command >> 8)  & 0x0F;   // shift down then mask 4 bits
-uint8_t extracted_flags =  command        & 0xFF;   // mask lowest 8 bits
+uint8_t extracted_motor_id    = (command >> 12) & 0x0F;   // shift down then mask 4 bit. 0x0F means “keep only the lowest 4 bits” (binary 0000 1111)
+uint8_t extracted_speed       = (command >> 8)  & 0x0F;   // shift down then mask 4 bits
+uint8_t extracted_flags       =  command        & 0xFF;   // mask lowest 8 bits
 ```
 
 This is exactly how every communication protocol frame, every hardware register, and every compact binary format works. Understanding shifts makes all of that readable.
