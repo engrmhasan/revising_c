@@ -1,6 +1,5 @@
 # Control Structures and Introduction to Operators
 
----
 
 ## Picking Up From Where We Left Off
 
