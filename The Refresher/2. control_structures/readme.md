@@ -664,7 +664,7 @@ Values successfully swapped!
 
 ---
 
-# Why This Works
+#### Why This Works
 
 Because XOR has two key properties:
 
