@@ -29,7 +29,7 @@ int main(void) // void means the function takes no arguments and returns an int 
         data = healthy[idx++];
         timeout--;
     }
-    printf(timeout > 0 ? "  Ready: 0x%02X\n\n" : "  Timed out.\n\n", data);
+    printf(timeout > 0 ? "  Ready: 0x%02X\n\n" : "  Timed out.\n\n", data); // ternary operator to print different messages based on whether we timed out or not. we will explore more of it later.
 
     /* Scenario 2: sensor never becomes ready — timeout fires */
     uint8_t dead[] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
