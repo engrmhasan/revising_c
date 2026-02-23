@@ -21,7 +21,7 @@ int main(void)
 
     /* body must run at least once. we need input before we can validate it */
     do {
-        choice = responses[idx++];
+        choice = responses[idx++]; // Iteration 1: choice = responses[0] = 0,  idx becomes 1
         if (choice < 1 || choice > 3)
             printf("Input %d: invalid.\n", choice);
         else
