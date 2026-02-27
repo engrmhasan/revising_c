@@ -1,5 +1,4 @@
 /*
-
 A vending machine operator must select a maintenance mode before servicing the unit.
 Valid modes are:
 
@@ -17,6 +16,5 @@ Valid modes are:
   values before a valid one, e.g., `{0, 7, 3}`).
 - For each invalid input print `"Invalid mode: X. Enter 1-4."`.
 - Once a valid mode is accepted, print the active mode name using a **chain of ternary operators**.
-
 */
 
