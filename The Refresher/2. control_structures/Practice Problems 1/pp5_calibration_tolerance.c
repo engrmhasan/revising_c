@@ -36,7 +36,7 @@ int main(){
 
         // if(fabs((readings[i]) - TARGET)>TOLERANCE){ //could have used this if manual absolute checking was not a constraint given in the task
         if(deviation>TOLERANCE){
-            printf("Sensor %zu with readings %.2f is failed\n", i, readings[i]);
+            printf("Sensor %zu with readings %.2f is out of tolerance\n", i, readings[i]);
             failed++;
         }
         else{
@@ -57,12 +57,12 @@ Test With
 
 Test Output:
     Sensor 0 with readings 5.01 is passed
-    Sensor 1 with readings 4.94 is failed
-    Sensor 2 with readings 5.06 is failed
+    Sensor 1 with readings 4.94 is out of tolerance
+    Sensor 2 with readings 5.06 is out of tolerance
     Sensor 3 with readings 5.00 is passed
     Sensor 4 with readings 4.99 is passed
-    Sensor 5 with readings 5.07 is failed
-    Sensor 6 with readings 4.93 is failed
+    Sensor 5 with readings 5.07 is out of tolerance
+    Sensor 6 with readings 4.93 is out of tolerance
     Sensor 7 with readings 5.02 is passed
     Total Passed: 4
     Total Failed: 4
