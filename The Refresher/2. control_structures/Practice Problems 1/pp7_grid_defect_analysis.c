@@ -59,7 +59,6 @@ int main() {
 
 
 
-
     return 0;
 }
 
@@ -72,7 +71,7 @@ Test With:
     gcc -Wall -Wextra pp7_grid_defect_analysis.c -o .\pp7_grid_defect_analysis
     .\pp7_grid_defect_analysis
 
-    
+
 Test Output:
 
     | ROW        | COL-0 | COL-1 | COL-2 | COL-3 | COL-4 | COL-5 | TOTAL |
