@@ -56,8 +56,25 @@ int main() {
         printf(" %5d |\n", dfcts_per_row);
     }
 
+    printf("| %-10s |", "MAX_DFCTS");
+    int overall_max = -999;
+    size_t overall_max_column = 0;
 
+    for(size_t i = 0; i < COLS; i++){
+        int max_defects = -999;
+        for(size_t j = 0; j < ROWS; j++){
+            if(grid[j][i] > max_defects){
+                max_defects = grid[j][i];
+            }
+        }
+        printf(" %5d |", max_defects);
+        if(max_defects > overall_max){
+            overall_max = max_defects;
+            overall_max_column = i;
+        }
+    }
 
+    printf("\nColumn-%zu has the highest maximum of %d\n", overall_max_column, overall_max);
 
     return 0;
 }
@@ -79,5 +96,7 @@ Test Output:
     | 1          |     4 |     0 |     1 |     6 |     0 |     8 |    19 |
     | 2          |     2 |     9 |     0 |     3 |     5 |     0 |    19 |
     | 3          |     7 |     1 |     4 |     0 |     6 |    10 |    28 |
+    | MAX_DFCTS  |     7 |     9 |     5 |     6 |     7 |    10 |
+    Column-5 has the highest maximum of 10
 
 */
