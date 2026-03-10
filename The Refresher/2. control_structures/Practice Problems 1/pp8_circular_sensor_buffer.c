@@ -44,12 +44,12 @@ int main(){
       rolling_average = (float)sum / (float)filled;
       printf("Reading %2zu | filled=%zu | Rolling Avg: %.2f\n", i+1, filled, rolling_average);
   }
-  printf("Buffer Values before Replace: ");
+  printf("Before Replace: ");
   for(size_t i = 0; i < BUFFER_SIZE; i++){
     printf(" %" PRId32 "\t", readings[i]);
   }
 
-  printf("\nBuffer Values after Replace:  ");
+  printf("\nAfter Replace:  ");
   for(size_t i = 0; i < BUFFER_SIZE; i++){
     printf(" %" PRId32 "\t", buffer[i]);
   }
@@ -79,8 +79,8 @@ Test Output:
   Reading 10 | filled=8 | Rolling Avg: 23.25
   Reading 11 | filled=8 | Rolling Avg: 22.12
   Reading 12 | filled=8 | Rolling Avg: 22.25
-  Buffer Values before Replace:  15        18      22      19      25      30      28      24
-  Buffer Values after Replace:   21        17      13      20      25      30      28      24
+  Before Replace:  15        18      22      19      25      30      28      24
+  After Replace:   21        17      13      20      25      30      28      24
   Rolling Average: 22.25
 
 */
