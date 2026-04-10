@@ -31,6 +31,8 @@ The system defines three alarm levels:
 #define SENSORS 3
 #define WARN_THRESH 35
 #define CRIT_THRESH 50
+#define MIN_LEVEL 1
+#define MAX_LEVEL 3
 
 void read_status(int arr[][SENSORS], size_t zone_reports[]){  
   for(int i=0; i<ZONES; i++){
@@ -38,13 +40,12 @@ void read_status(int arr[][SENSORS], size_t zone_reports[]){
     zone_reports[i] = 1;
 
     for(int j=0; j<SENSORS; j++){
-      if (arr[i][j] >= CRIT_THRESH){
-        zone_reports[i] = 3;
-        break;
-      }
-      else if(arr[i][j] >= WARN_THRESH  && arr[i][j] < CRIT_THRESH){
-        zone_reports[i] = 2;
-      }
+      size_t level = MIN_LEVEL;
+      if (arr[i][j] >= CRIT_THRESH) level = MAX_LEVEL;
+      else if(arr[i][j] >= WARN_THRESH) level = 2;
+
+      if(level>zone_reports[i]) zone_reports[i] = level;
+      if(level == MAX_LEVEL) break;
     }
   }
 }
@@ -63,12 +64,12 @@ int main(){
         {49, 39, 48},
         {50, 52, 55}
     };
-
+    
+    int (*grids[])[SENSORS] = {grid0, grid1};
+    int count_critical = 0;
     int read_snapshots = 0;
     do{
       size_t reports[ZONES];
-
-      int (*grids[])[SENSORS] = {grid0, grid1};
       
       // read_status(read_snapshots == 0 ? grid0 : grid1, reports);
       read_status(grids[read_snapshots], reports);
@@ -86,11 +87,14 @@ int main(){
         }
         else{
           printf("Zone %zu condition is CRITICAL\n",i);
+          count_critical++;
         }
       }
 
       read_snapshots++;
     }while(read_snapshots < SNAPSHOTS);
+
+    printf("\nThere are %d zones that are critical in across snapshot. Immediate action must be taken now.\n", count_critical);
     
 }
 
@@ -109,5 +113,7 @@ Zone 2 condition is NORMAL
 Zone 0 condition is WARNING
 Zone 1 condition is WARNING
 Zone 2 condition is CRITICAL
+
+There are 2 zones that are critical in across snapshot. Immediate action must be taken now.
 
 */
