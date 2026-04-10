@@ -312,6 +312,10 @@ The time we invest in C pays compound interest across every system, language, an
 
 Once we are comfortable with the basics above, there is a clear path forward.
 
+**Data Types and representation**: A deep dive into how data is stored and interpreted: integer representation, Two's complement for negatives, floating-point IEEE 754 encoding, and platform-specific types like `size_t` and fixed-width integers from `stdint.h`.
+
+**Control Structures and Operators** : loops, conditionals, operators like `+`, `-`, `*`, `/`, `%`, bitwise operators, logical operators (`&&`, `||`, `!`), comparison operators (`==`, `!=`, `<`, `>`, `<=`, `>=`), and the ternary operator (`? :`).
+
 **Strings in C.** Strings are arrays of `char` terminated by a null byte. The standard library has functions for working with them: `strlen`, `strcpy`, `strcat`, `strcmp`.
 
 **Structs.** A struct groups related variables of different types under a single name. It is the foundation of data modeling in C.

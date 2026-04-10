@@ -161,4 +161,52 @@ Here is a simple example program:
 - Example:
   - `sizeof("hello")` returns **6 bytes**, including the null terminator `\0`.
 
+
+
+### Format Specifiers
+
+| Specifier | Full Name | Data Type | Use Case | Example |
+| --- | --- | --- | --- | --- |
+| **`%d`** or **`%i`** | Signed Decimal | `int` | Standard whole numbers (positive/negative). | `-42`, `10` |
+| **`%ld`** | Long Decimal | `long` | Large signed integers (32 or 64-bit). | `2147483647` |
+| **`%lld`** | Long Long Dec | `long long` | Extremely large signed integers (64-bit). | `9e18...` |
+| **`%u`** | Unsigned Decimal | `unsigned int` | Positive-only whole numbers. | `5000` |
+| **`%f`** | Floating Point | `float` | Numbers with decimals (standard precision). | `3.1415` |
+| **`%lf`** | Long Float | `double` | High-precision decimals (most common for math). | `2.7182818` |
+| **`%e`** | Scientific | `float` / `double` | Exponential notation. | `1.23e+04` |
+| **`%g`** | General | `float` / `double` | Uses `%f` or `%e`, whichever is shorter. | `123.4` |
+| **`%%`** | Literal Percent | N/A | Prints a physical `%` symbol. | `100%` |
+| **`%c`** | Character | `char` | A single letter, digit, or symbol. | `'A'`, `'!'` |
+| **`%s`** | String | `char*` (Array) | A sequence of text/words. | `"Hello"` |
+| **`%p`** | Pointer | `void*` | A memory address (shown in Hex). | `0x7ffc...` |
+| **`%zu`** | Size Unsigned | `size_t` | **Array indexes** and `sizeof` results. | `1024` |
+| **`%hd`** | Half Decimal | `short` | Small signed integers (16-bit). | `-32768` |
+| **`%hu`** | Half Unsigned | `unsigned short` | Small positive integers (16-bit). | `65535` |
+| **`%x`** | Hexadecimal | `int` / `uint32_t` | Base-16 (lowercase); used for memory/bits. | `0x2f` |
+| **`%X`** | Hexadecimal | `int` / `uint32_t` | Base-16 (UPPERCASE). | `0x2F` |
+| **`%o`** | Octal | `int` | Base-8 (rarely used today). | `0755` |
+
+---
+
+#### Special Engineering Types (`<inttypes.h>`)
+
+When we use types like `uint32_t` or `uint64_t`, the standard specifiers (`%d`, `%u`) can sometimes be slightly wrong depending on the computer's architecture. To be **100% professional**, engineers use "Macros" for these types:
+
+| Data Type | Correct Specifier Macro | What it actually looks like |
+| --- | --- | --- |
+| **`int32_t`** | `PRId32` | `printf("Temp: %" PRId32 "\n", my_var);` |
+| **`uint32_t`** | `PRIu32` | `printf("Count: %" PRIu32 "\n", my_var);` |
+| **`uint64_t`** | `PRIu64` | `printf("Total: %" PRIu64 "\n", my_var);` |
+
+*check format_specifiers.c for example*
+---
+
+#### Pro-Tip: The "Width and Precision" Trick
+
+We can add numbers between the `%` and the letter to format the layout. This is common in loops to keep columns aligned.
+
+* **`%5d`**: Reserves 5 spaces for the number (right-aligned).
+* **`%05d`**: Reserves 5 spaces and pads empty ones with **zeros** (e.g., `00042`).
+* **`%.2f`**: Rounds a decimal to exactly **2 places** (e.g., `3.14`).
+
 For more details, explore each c files.

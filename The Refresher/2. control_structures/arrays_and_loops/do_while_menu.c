@@ -28,8 +28,9 @@ int main(void)
             printf("Input %d: accepted.\n", choice);
     } while (choice < 1 || choice > 3);
 
+    // Prints active mode using ternary operator, works like if-else
     printf("\nMode active: %s\n",
-           choice == 1 ? "Restock" :
+           choice == 1 ? "Restock" : //
            choice == 2 ? "Diagnostics" : "Power Off");
 
     return 0;
